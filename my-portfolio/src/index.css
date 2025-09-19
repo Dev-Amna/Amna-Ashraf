@@ -1,0 +1,332 @@
+:root {
+  --bg: #121212;
+  --primary: #6e48aa;
+  --secondary: #581a70;
+  --accent: #4776E6;
+  --text: #f5f5f5;
+  --nav-bg: rgba(20, 20, 20, 0.7);
+
+  --primary-light: #6e48aa;
+  --secondary-light: #6e48aa;
+  --accent-light: #4776E6;
+}
+
+/* Body + Theme Modes */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460);
+  color: var(--text);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+body.light {
+  background: linear-gradient(-45deg, var(--bg), #6e48aa, #16213e, var(--bg));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+}
+
+/* Theme transition animation */
+body.theme-transition {
+  animation: themeFade 0.5s ease;
+}
+
+@keyframes themeFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  backdrop-filter: blur(10px);
+  background: var(--nav-bg);
+  border-bottom: 2px solid rgba(110, 72, 170, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.navLinks ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navLinks ul li a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.navLinks ul li a:hover { color: var(--accent); }
+
+.navLinks ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.navLinks ul li a:hover::after { width: 100%; }
+
+/* Theme Toggle */
+.themeBtn button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.themeBtn button:hover { background: rgba(0, 0, 0, 0.05); }
+
+/* icon animations (sun + moon) */
+.theme-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* spin/fade on theme change */
+body.theme-transition .theme-icon {
+  transform: rotate(180deg);
+  opacity: 0.7;
+}
+
+/* hover effect */
+.themeBtn button:hover .theme-icon {
+  transform: rotate(20deg) scale(1.1);
+  opacity: 1;
+}
+
+/* Mobile Menu & Sidebar */
+.mobileMenuToggle { display: none; }
+
+.menuIcon,
+.closeIcon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menuIcon:hover,
+.closeIcon:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -304px;
+  height: 100vh;
+  width: 250px;
+  background: var(--nav-bg);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  padding: 80px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2000;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open { left: 0; }
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+}
+
+.sidebar.open ul li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar.open ul li:nth-child(1) { transition-delay: 0.1s; }
+.sidebar.open ul li:nth-child(2) { transition-delay: 0.2s; }
+.sidebar.open ul li:nth-child(3) { transition-delay: 0.3s; }
+.sidebar.open ul li:nth-child(4) { transition-delay: 0.4s; }
+.sidebar.open ul li:nth-child(5) { transition-delay: 0.5s; }
+
+.sidebar ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover { color: var(--accent); }
+
+/* Prevent body scroll */
+body.no-scroll { overflow: hidden; }
+
+/* Overlay Blur */
+.overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
+
+/* Bubble Background */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -150px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: rise 20s linear infinite;
+}
+
+/* Light Mode Bubble Styles */
+body.light .bubbles span {
+  background: rgba(40, 37, 37, 0.541);
+}
+
+.bubbles span:nth-child(1) {
+  left: 10%;
+  width: 60px;
+  height: 60px;
+  animation-duration: 15s;
+}
+
+.bubbles span:nth-child(2) {
+  left: 20%;
+  animation-duration: 20s;
+  animation-delay: 2s;
+}
+
+.bubbles span:nth-child(3) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-duration: 25s;
+}
+
+.bubbles span:nth-child(4) {
+  left: 40%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 18s;
+  animation-delay: 3s;
+}
+
+.bubbles span:nth-child(5) {
+  left: 55%;
+  animation-duration: 22s;
+}
+
+.bubbles span:nth-child(6) {
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  animation-duration: 30s;
+  animation-delay: 5s;
+}
+
+.bubbles span:nth-child(7) {
+  left: 80%;
+  width: 75px;
+  height: 75px;
+  animation-duration: 28s;
+}
+
+.bubbles span:nth-child(8) {
+  left: 90%;
+  animation-duration: 26s;
+  animation-delay: 4s;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 880px) {
+  .themeBtn { margin-right: 30rem; }
+  .navLinks { display: none; }
+  .mobileMenuToggle { display: block; z-index: 3000; }
+  .nav { width: 90%; position: fixed; z-index: 2001; }
+  .sidebar.open~.nav .logo { position: relative; z-index: 2001; }
+}
+
+html { scroll-behavior: smooth; }
+
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-and-theme {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.themeBtn { margin-right: 0 !important; }
