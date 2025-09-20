@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion, useScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
 import Header from "./Header";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
