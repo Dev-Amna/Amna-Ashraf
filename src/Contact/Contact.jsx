@@ -10,15 +10,12 @@ import './Contact.css';
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', msg: '' });
 
-
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     emailjs.send(
       "service_4v4s31d",
       "template_6txi5km",
@@ -41,8 +38,6 @@ function Contact() {
 
   return (
     <>
-
-      {/*  Toast Container */}
       <ToastContainer position="top-right" theme="colored" />
 
       <section id='contact' className='contact-section'>
@@ -59,7 +54,6 @@ function Contact() {
               <li><a href="https://github.com/Dev-Amna" aria-label="GitHub"><i className="fab fa-github"></i></a></li>
               <li><a href="https://www.linkedin.com/in/amna-ashraf1122/" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a></li>
               <li><a href="https://www.youtube.com/@Dev-Amna" aria-label="youtube"><i className="fab fa-youtube"></i></a></li>
-
             </ul>
           </div>
 
@@ -69,30 +63,42 @@ function Contact() {
               <h2 className="form-title" data-aos="fade-up">Contact Me</h2>
 
               <div className="input-group" data-aos="fade-up" data-aos-delay="100">
-                <label htmlFor="name">Name *</label>
                 <input
-                  type="text" id='name' name='name'
-                  placeholder='Enter your name..'
-                  value={formData.name} onChange={handleChange} required
+                  type="text"
+                  id='name'
+                  name='name'
+                  placeholder=" "
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                 />
+                <label htmlFor="name">Name *</label>
               </div>
 
               <div className="input-group" data-aos="fade-up" data-aos-delay="200">
-                <label htmlFor="email">Email *</label>
                 <input
-                  type="email" id='email' name='email'
-                  placeholder='Enter your Email...'
-                  value={formData.email} onChange={handleChange} required
+                  type="email"
+                  id='email'
+                  name='email'
+                  placeholder=" "
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
+                <label htmlFor="email">Email *</label>
               </div>
 
               <div className="input-group" data-aos="fade-up" data-aos-delay="300">
-                <label htmlFor="msg">Message *</label>
                 <textarea
-                  id='msg' name='msg' rows="4"
-                  placeholder='Write here your Msg..'
-                  value={formData.msg} onChange={handleChange} required
+                  id='msg'
+                  name='msg'
+                  rows="4"
+                  placeholder=" "
+                  value={formData.msg}
+                  onChange={handleChange}
+                  required
                 ></textarea>
+                <label htmlFor="msg">Message *</label>
               </div>
 
               <div data-aos="zoom-in" data-aos-delay="400">
