@@ -179,12 +179,7 @@ function Hero() {
 
         {/* Intro Image */}
         <div className="intro-img" data-aos="zoom-in-up" data-aos-once="false">
-          <img src={heroImg}  alt="Amna Ashraf" />
-          <div className="floating-elements">
-            <div className="floating-icon">🚀</div>
-            <div className="floating-icon">💻</div>
-            <div className="floating-icon">✨</div>
-          </div>
+          <img src={heroImg} alt="Amna Ashraf" />
         </div>
       </section>
     </div>

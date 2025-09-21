@@ -1,13 +1,12 @@
-/* Hero.css */
 .hero-section {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 4rem; 
+  justify-content: space-evenly;
   min-height: 100vh;
-  padding: 0 10%;
+  padding: 0 5%;
   overflow: hidden;
-  
 }
 
 .particle-canvas {
@@ -28,104 +27,17 @@
 .typewriter-text {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 2px ;
+  text-shadow: 2px 2px 2px;
 }
 
 .intro h2 {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2rem;
-
 }
 
-strong{
-   text-shadow: 1px 1px 1px ;
-}
-
-.intro-img {
-  position: relative;
-  z-index: 2;
-}
-/* comit */
-.intro-img img {
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-.floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.floating-icon {
-  position: absolute;
-  font-size: 2rem;
-  animation: floatAround 10s linear infinite;
-}
-
-.floating-icon:nth-child(1) {
-  top: 20%;
-  left: -10%;
-  animation-delay: 0s;
-  animation-duration: 15s;
-}
-
-.floating-icon:nth-child(2) {
-  top: 60%;
-  right: -5%;
-  animation-delay: 2s;
-  animation-duration: 12s;
-}
-
-.floating-icon:nth-child(3) {
-  bottom: 10%;
-  left: 20%;
-  animation-delay: 4s;
-  animation-duration: 18s;
-}
-
-@keyframes floatAround {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(50px, 50px) rotate(90deg); }
-  50% { transform: translate(100px, 0) rotate(180deg); }
-  75% { transform: translate(50px, -50px) rotate(270deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* Responsive design */
-@media (max-width: 968px) {
-  .hero-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding-top: 100px;
-  }
-  
-  .intro {
-    margin-bottom: 2rem;
-  }
-  
-  .typewriter-text {
-    font-size: 2rem;
-  }
-  
-  .intro-img img {
-    width: 250px;
-    height: 250px;
-  }
+strong {
+  text-shadow: 1px 1px 1px;
 }
 
 .intro-text {
@@ -134,4 +46,73 @@ strong{
   line-height: 1.6;
   max-width: 600px;
   color: #f1f1f1;
+}
+
+/* Image container */
+.intro-img {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+/* Image itself – use vw for responsiveness */
+.intro-img img {
+  width: 20vw;              
+  max-width: 350px;       
+  min-width: 200px;        
+  border-radius: 50%;
+ 
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  border: 1rem double rgba(153, 2, 153, 0.66);
+ 
+  
+ 
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .hero-section {
+    gap: 2rem;
+    padding: 0 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 4rem;
+    gap: 2rem;
+  }
+
+  .typewriter-text {
+    font-size: 2.2rem;
+  }
+
+  .intro h2 {
+    font-size: 1.2rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
+  .intro-img img {
+    width: 45vw;        
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter-text {
+    font-size: 1.8rem;
+  }
+
+  .intro-img img {
+    width: 60vw;
+    max-width: 200px;
+  }
 }

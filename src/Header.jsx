@@ -5,7 +5,7 @@ import "./index.css";
 import Contact from "./Contact/Contact";
 import Project from "./project/Project";
 import About from "./aboutSeaction/About";
-import { FaSun, FaMoon } from "react-icons/fa"; // ✅ import here
+import { FaSun, FaMoon } from "react-icons/fa"; 
 
 function Header() {
   const [dark, setDark] = useState(true);
