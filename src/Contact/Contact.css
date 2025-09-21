@@ -98,6 +98,9 @@
 
 /* Form Content */
 .formContent {
+
+  
+
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -110,6 +113,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .form-title {
@@ -254,7 +258,7 @@
   font-weight: 600;
 }
 
-/.formContent {
+.formContent {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -342,4 +346,36 @@
   .formContent {
     padding: 1.5rem;
   }
+}
+
+/* rotating conic gradient border */
+.formContent::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background-image: conic-gradient(
+    var(--accent) 20deg,
+    transparent 120deg
+  );
+  animation: rotateBorder 3s linear infinite;
+  z-index: -2;
+}
+
+/* */
+.formContent::after {
+  content: "";
+  position: absolute;
+  inset: 3px;         
+  background: #101010; 
+  border-radius: inherit;
+  z-index: -1;
+  box-shadow: inset 20px 20px 20px #0000008c;
+}
+
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
 }
