@@ -99,7 +99,7 @@ function Header() {
             <li><a href="#about"><i className="fa-solid fa-circle-info"></i> About</a></li>
             <li><a href="#skill"><i className="fa-solid fa-gear"></i> Skills</a></li>
             <li><a href="#project"><i className="fa-solid fa-briefcase"></i> Projects</a></li>
-            <li><a href="#contact"><i className="fa-solid fa-phone"></i> Contact Me</a></li>
+            <li className="style-btn"><a href="#contact"><i className="fa-solid fa-phone "></i> Contact Me</a></li>
           </ul>
         </div>
 
