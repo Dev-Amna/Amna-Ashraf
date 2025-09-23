@@ -40,7 +40,7 @@ export const MyButton = styled.button`
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 200%;
+    width: 100%;
     height: 200%;
     background: rgba(255, 255, 255, 0.1);
     transform: rotate(45deg);
@@ -70,7 +70,11 @@ export const MyButton = styled.button`
     transform: scale(1.3);
   }
 
-
+  /* Responsive styles directly on this component */
+  @media (max-width: 600px) {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
 `;
 
 function Button() {

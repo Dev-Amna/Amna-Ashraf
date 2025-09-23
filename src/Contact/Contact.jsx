@@ -101,7 +101,7 @@ function Contact() {
                 <label htmlFor="msg">Message *</label>
               </div>
 
-              <div data-aos="zoom-in" data-aos-delay="400">
+              <div data-aos-delay="400">
                 <MyButton type="submit" className="submit-btn">Send</MyButton>
               </div>
             </div>
