@@ -13,19 +13,20 @@
   --nav-bg: rgba(13, 17, 23, 0.85);
 }
 
+html,
 body {
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
   padding: 0;
-  min-height: 100vh;
 
-  background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   overflow-x: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: background 0.6s ease, color 0.6s ease;
+  scroll-behavior: smooth;
 }
+
 body.light {
   --bg: #1a2a40;             /* dark navy background */
   --accent: #4fc3f7;         /* bright sky blue accent */

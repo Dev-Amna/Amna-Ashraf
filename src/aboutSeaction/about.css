@@ -8,8 +8,6 @@
 
 /* Section */
 .about-section {
-  
-  padding: 80px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,4 +141,73 @@
 @keyframes rotateBorder {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
+}
+/* Large screens (desktops) – keep as is */
+/* Optional: if you want a max width for text */
+.about-text {
+  max-width: 600px;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+  .about-section {
+    padding: 60px 15px;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .about-img img {
+    width: 400px;
+    height: 400px;
+  }
+
+  .about-text {
+    flex: 1 1 100%;
+    font-size: 1rem;
+    padding: 25px 25px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .about-section {
+    padding: 40px 10px;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .about-img img {
+    width: 100%;
+    max-width: 300px;
+    height: auto; /* keeps aspect ratio */
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/* Ultra small (very narrow phones) */
+@media (max-width: 400px) {
+  .about-title {
+    font-size: 1.5rem;
+  }
+  .about-text {
+    font-size: 0.9rem;
+  }
 }

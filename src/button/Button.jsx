@@ -70,12 +70,14 @@ export const MyButton = styled.button`
     transform: scale(1.3);
   }
 
-  
+
 `;
 
 function Button() {
   return (
-    <> </>
+    <MyButton>
+      Click Me <i className="icon">★</i>
+    </MyButton>
   );
 }
 
