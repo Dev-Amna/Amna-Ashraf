@@ -1,16 +1,48 @@
-# React + Vite
+# My Portfolio – React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio built with React and Vite. It includes sections like Hero, About, Skills, Projects, and Contact. The design is responsive and uses smooth animations and effects to make it interactive and modern.
 
-Currently, two official plugins are available:
+## Live Demo
+👉 https://amna-ashraf-r4iz.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
+- React  
+- Vite  
+- JavaScript  
+- CSS  
+- Vercel (Deployment)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Amna-Ashraf
-# Amna-Ashraf
-# Amna-Ashraf
-# Amna-Ashraf
+---
+
+## Libraries Used
+
+### UI & Animations
+- **AOS** – scroll animations  
+- **motion** – smooth motion animations  
+- **react-parallax-tilt** – 3D card tilt effect  
+- **typewriter-effect** – typing animation  
+- **react-toastify** – toast notifications  
+
+### UI Components
+- **react-icons** – icons  
+- **@fortawesome/fontawesome-free** – font icons  
+- **react-masonry-css** – masonry layout  
+- **styled-components** – component-level styling  
+
+### Functionality
+- **emailjs-com** – contact form email handling  
+
+### Core
+- **react**  
+- **react-dom**  
+
+### Build Tools
+- **vite**  
+- **@vitejs/plugin-react**
+
+---
+
+## Folder Structure
+
