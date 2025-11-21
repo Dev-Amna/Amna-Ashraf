@@ -34,15 +34,9 @@ This is my personal portfolio built with React and Vite. It includes sections li
 ### Functionality
 - **emailjs-com** – contact form email handling  
 
-### Core
-- **react**  
-- **react-dom**  
 
-### Build Tools
-- **vite**  
-- **@vitejs/plugin-react**
 
----
 
-## Folder Structure
+
+
 
