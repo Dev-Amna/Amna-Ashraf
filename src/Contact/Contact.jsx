@@ -24,7 +24,7 @@ function Contact() {
         from_email: formData.email,
         message: formData.msg,
       },
-      "amliGqfnbMradbntO"
+      "gf9OfKiAGstx0sCiv"
     ).then(
       () => {
         toast.success("Message sent successfully!", { autoClose: 3000 });

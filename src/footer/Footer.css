@@ -1,0 +1,65 @@
+.footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #333;
+}
+
+.footer-content h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #6a5cff;
+}
+
+.footer-content p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Keep button animations but remove centering */
+.magic-container {
+  margin-top: 20px;
+}
+
+/* MyButton animation */
+.magic-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff6f61, #ffcc00, #6a5cff);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: glow 2s infinite alternate, bounce 2s infinite;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #ff6f61, 0 0 20px #ffcc00;
+  }
+  50% {
+    box-shadow: 0 0 20px #6a5cff, 0 0 30px #ff6f61;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #6a5cff;
+  }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+/* Hover effect */
+.magic-button:hover {
+  transform: scale(1.2) rotate(-5deg);
+  box-shadow: 0 0 25px #ffcc00, 0 0 50px #ff6f61, 0 0 75px #6a5cff;
+}

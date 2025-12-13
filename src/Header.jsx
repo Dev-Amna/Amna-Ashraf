@@ -5,12 +5,18 @@ import "./index.css";
 import Contact from "./Contact/Contact";
 import Project from "./project/Project";
 import About from "./aboutSeaction/About";
+import Footer from "./footer/Footer";
 import { FaSun, FaMoon } from "react-icons/fa"; 
 
 function Header() {
+  
   const [dark, setDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+const [showMagic, setShowMagic] = useState(false);
 
+  const handleMagicClick = () => {
+    setShowMagic(true);
+  };
   // Theme handling
   useEffect(() => {
     const body = document.body;
@@ -145,6 +151,7 @@ function Header() {
       <Skill />
       <Project />
       <Contact />
+      <Footer />
     </>
   );
 }
