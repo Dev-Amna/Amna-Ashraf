@@ -65,9 +65,7 @@ const [showMagic, setShowMagic] = useState(false);
         <div className="logo-and-theme">
           <div
             className="logo"
-            onClick={() => {
-              document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
-            }}
+           
           >
             <span
               style={{
