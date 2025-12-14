@@ -3,8 +3,8 @@
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;   
-  justify-content: flex-start; 
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   padding: 2rem;
   position: relative;
@@ -17,10 +17,9 @@
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 3rem;  
-  text-shadow: 1px 1px 3px ;
+  margin-bottom: 3rem;
+  text-shadow: 1px 1px 3px;
 }
-
 
 .contact-container {
   display: flex;
@@ -111,7 +110,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  
 }
 
 .form-title {
@@ -158,32 +156,30 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-
-
 /* Responsive Design */
 @media (max-width: 900px) {
   .contact-container {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .contact-section {
     padding: 1.5rem;
   }
-  
+
   .follow {
     width: 100%;
     text-align: center;
   }
-  
+
   .follow h1 {
     font-size: 1.8rem;
   }
-  
+
   .follow ul {
     justify-content: center;
   }
-  
+
   .formContent {
     padding: 1.5rem;
   }
@@ -199,7 +195,7 @@
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   opacity: 0.95;
   animation: fadeInOut 3s ease forwards;
@@ -210,15 +206,27 @@
 }
 
 .toast.error {
-  background: #dc3545; 
+  background: #dc3545;
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-20px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-20px); }
-}.formContent input:-webkit-autofill,
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+.formContent input:-webkit-autofill,
 .formContent textarea:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   -webkit-text-fill-color: #fff !important;
@@ -229,8 +237,8 @@
 .formContent input:-webkit-autofill:focus,
 .formContent textarea:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: #fff !important; 
-  transition: background-color 9999s ease-in-out 0s; 
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 .formContent {
@@ -287,8 +295,7 @@
 
 .input-group input,
 .input-group textarea {
-
-  padding: 1rem 0.75rem 0.5rem; 
+  padding: 1rem 0.75rem 0.5rem;
   font-size: 1rem;
   color: #fff;
   background: transparent;
@@ -300,8 +307,8 @@
 
 .input-group input:focus,
 .input-group textarea:focus {
-  border-color: rgba(128,0,128,0.7);
-  background-color: rgba(128,0,128,0.1);
+  border-color: rgba(128, 0, 128, 0.7);
+  background-color: rgba(128, 0, 128, 0.1);
 }
 
 .input-group label {
@@ -309,11 +316,10 @@
   left: 12px;
   top: 1rem;
   font-size: 1rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   pointer-events: none;
   transition: 0.2s ease;
   padding: 0 4px;
-  
 }
 
 .input-group input:focus + label,
@@ -323,7 +329,7 @@
   top: -0.6rem;
   font-size: 0.8rem;
   color: white;
-  background: rgba(255,255,255,0.05); 
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 4px;
 }
 
@@ -354,10 +360,7 @@
   height: 150%;
   top: -25%;
   left: -25%;
-  background-image: conic-gradient(
-    var(--accent) 20deg,
-    transparent 120deg
-  );
+  background-image: conic-gradient(var(--accent) 20deg, transparent 120deg);
   animation: rotateBorder 3s linear infinite;
   z-index: -2;
 }
@@ -366,14 +369,66 @@
 .formContent::after {
   content: "";
   position: absolute;
-  inset: 3px;         
-  background: #101010; 
+  inset: 3px;
+  background: #101010;
   border-radius: inherit;
   z-index: -1;
   box-shadow: inset 20px 20px 20px #0000008c;
 }
 
 @keyframes rotateBorder {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Keep button animations but remove centering */
+.magic-container {
+  margin-top: 20px;
+}
+
+/* MyButton animation */
+.magic-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff6f61, #ffcc00, #6a5cff);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: glow 2s infinite alternate, bounce 2s infinite;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #ff6f61, 0 0 20px #ffcc00;
+  }
+  50% {
+    box-shadow: 0 0 20px #6a5cff, 0 0 30px #ff6f61;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #6a5cff;
+  }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+/* Hover effect */
+.magic-button:hover {
+  transform: scale(1.2) rotate(-5deg);
+  box-shadow: 0 0 25px #ffcc00, 0 0 50px #ff6f61, 0 0 75px #6a5cff;
 }

@@ -3,11 +3,18 @@ import emailjs from 'emailjs-com';
 import { MyButton } from '../button/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import MagicButton from "../footer/MagicButton";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Contact.css';
 
 function Contact() {
+   const [showMagic, setShowMagic] = useState(false);
+
+const handleMagicClick = () => setShowMagic(true);
+const closeMagic = () => setShowMagic(false);
+
   const [formData, setFormData] = useState({ name: '', email: '', msg: '' });
 
   const handleChange = (e) => {
@@ -55,6 +62,16 @@ function Contact() {
               <li><a href="https://www.linkedin.com/in/amna-ashraf1122/" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a></li>
               <li><a href="https://www.youtube.com/@Dev-Amna" aria-label="youtube"><i className="fab fa-youtube"></i></a></li>
             </ul>
+<div className="magic-container">
+  {!showMagic && (
+    <MyButton className="magic-button" onClick={handleMagicClick}>
+      See Magic
+    </MyButton>
+  )}
+
+  {showMagic && <MagicButton onClose={closeMagic} />}
+</div>
+
           </div>
 
           {/* Contact Form */}
