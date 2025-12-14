@@ -1,5 +1,5 @@
 import React from 'react'
-import aboutImg from "../assets/amna.jpeg"
+import aboutImg from "../assets/amna-ashraf.png"
 import "./about.css"
 import { MyButton } from '../button/Button'
 import AmnaCV from "../assets/Amna_Ashraf_CV.pdf"

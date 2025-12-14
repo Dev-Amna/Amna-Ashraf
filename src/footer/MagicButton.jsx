@@ -46,7 +46,7 @@ function MagicButton() {
       {showCard && (
         <div className="card-overlay">
           <div className="box">
-            <h1>Do you like me?</h1>
+            <h1>Do you like my portfolio?</h1>
 
             <div className="buttons">
               <button className="yes-btn" onClick={handleYes}>
