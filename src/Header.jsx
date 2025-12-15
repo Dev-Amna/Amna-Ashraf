@@ -5,7 +5,7 @@ import "./index.css";
 import Contact from "./Contact/Contact";
 import Project from "./project/Project";
 import About from "./aboutSeaction/About";
-import Footer from "./footer/Footer";
+
 import { FaSun, FaMoon } from "react-icons/fa"; 
 
 function Header() {
@@ -149,7 +149,7 @@ const [showMagic, setShowMagic] = useState(false);
       <Skill />
       <Project />
       <Contact />
-      <Footer />
+ 
     </>
   );
 }
