@@ -1,36 +1,4 @@
-.contact-section {
-  text-align: center;
-  min-height: 100vh;
-  /* width: 100%; */
-  display: flex;
-  flex-direction: column;   
-  justify-content: flex-start; 
-  align-items: center;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-}
 
-.contact-title {
-  text-align: center;
-  width: 100%;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 3rem;  
-  text-shadow: 1px 1px 3px ;
-}
-
-
-.contact-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  max-width: 1200px;
-  width: 100%;
-  z-index: 2;
-}
 
 /* Follow Section */
 .follow {
@@ -817,5 +785,89 @@ form {
   
   .follow ul li:active {
     transform: scale(0.95);
+  }
+}/* Add these styles for the submit button */
+
+/* Submit Button Container */
+.formContent > div:last-child {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Submit Button Styles */
+.submit-btn {
+  width: 100% !important; /* Force full width */
+  display: block !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #8a2be2, #9370db) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+}
+
+.submit-btn::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: 0.5s !important;
+  z-index: -1 !important;
+}
+
+.submit-btn:hover::before {
+  left: 100% !important;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4) !important;
+  background: linear-gradient(135deg, #9370db, #8a2be2) !important;
+}
+
+.submit-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3) !important;
+}
+
+/* Magic Button Styles */
+.magic-button {
+  width: 100% !important;
+  display: block !important;
+  margin-top: 1.5rem !important;
+}
+
+/* Update the button container in your JSX */
+.formContent > div {
+  width: 100%;
+}
+
+/* Make sure the button container takes full width */
+.formContent div[data-aos-delay="400"] {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .submit-btn {
+    padding: 0.9rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-btn {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.95rem !important;
   }
 }
