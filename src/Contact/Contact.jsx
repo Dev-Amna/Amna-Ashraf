@@ -11,6 +11,7 @@ import "./Contact.css";
 
 function Contact() {
   const [showMagic, setShowMagic] = useState(false);
+  const [loading, setLoading] = useState(false); // New state for loading
 
   const handleMagicClick = () => setShowMagic(true);
   const closeMagic = () => setShowMagic(false);
@@ -23,6 +24,8 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
+
     emailjs
       .send(
         "service_4v4s31d",
@@ -44,7 +47,10 @@ function Contact() {
             autoClose: 3000,
           });
         }
-      );
+      )
+      .finally(() => {
+        setLoading(false); // Stop loading after success or error
+      });
   };
 
   return (
@@ -156,16 +162,15 @@ function Contact() {
               </div>
 
               <div data-aos-delay="400">
-                <MyButton type="submit" className="submit-btn">
-                  Send
+                <MyButton type="submit" className="submit-btn" disabled={loading}>
+                  {loading ? "Sending..." : "Send"}
                 </MyButton>
               </div>
             </div>
           </form>
         </div>
-
       </section>
-          <Footer />
+      <Footer />
     </>
   );
 }
