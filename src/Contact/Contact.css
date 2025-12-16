@@ -872,14 +872,3 @@ form {
   }
 }
 
-.auto-reply {
-  margin: 1.5rem 0;
-  padding: 16px;
-  background: rgba(71, 118, 230, 0.1);
-  border-left: 4px solid #4776E6;
-  font-family: 'Courier New', Courier, monospace;
-  white-space: pre-wrap; /* preserves line breaks */
-  color: var(--text);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}

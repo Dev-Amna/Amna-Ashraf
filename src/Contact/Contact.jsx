@@ -10,10 +10,8 @@ import "aos/dist/aos.css";
 import "./Contact.css";
 
 function Contact() {
-  const [autoReply, setAutoReply] = useState(""); // store formatted auto-reply
-
   const [showMagic, setShowMagic] = useState(false);
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(false);
 
   const handleMagicClick = () => setShowMagic(true);
   const closeMagic = () => setShowMagic(false);
@@ -26,45 +24,41 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
+
+    // Email to your inbox
+    const emailParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.msg,
+    };
 
     emailjs
-      .send(
-        "service_4v4s31d",
-        "template_6txi5km",
-        {
+      .send("service_4v4s31d", "template_6txi5km", emailParams, "gf9OfKiAGstx0sCiv")
+      .then(() => {
+        toast.success("Message sent successfully!", { autoClose: 3000 });
+        setFormData({ name: "", email: "", msg: "" });
+
+        // Auto-reply to visitor
+        const autoReplyParams = {
           from_name: formData.name,
-          from_email: formData.email,
           message: formData.msg,
-        },
-        "gf9OfKiAGstx0sCiv"
-      )
-      .then(
-        () => {
-          toast.success("Message sent successfully!", { autoClose: 3000 });
-          setFormData({ name: "", email: "", msg: "" });
-          setAutoReply(
-            `Hi ${formData.name},
+          to_email: formData.email, // must match {{to_email}} in template_qqh7s67
+        };
 
-Thank you for reaching out! I have received your message: "${formData.msg}"
-
-I will review it and get back to you as soon as possible.
-
-In the meantime, feel free to explore my portfolio for more info.
-
-Best regards,
-Amna`
-          );
-        },
-        () => {
-          toast.error("Failed to send message. Please try again.", {
-            autoClose: 3000,
+        emailjs
+          .send("service_4v4s31d", "template_qqh7s67", autoReplyParams, "gf9OfKiAGstx0sCiv")
+          .then(() => {
+            toast.info("Auto-reply sent to visitor!", { autoClose: 3000 });
+          })
+          .catch(() => {
+            toast.error("Failed to send auto-reply.", { autoClose: 3000 });
           });
-        }
-      )
-      .finally(() => {
-        setLoading(false); // Stop loading after success or error
-      });
+      })
+      .catch(() => {
+        toast.error("Failed to send message. Please try again.", { autoClose: 3000 });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -72,14 +66,13 @@ Amna`
       <ToastContainer position="top-right" theme="colored" />
 
       <section id="contact" className="contact-section">
-        <h1 className="contact-title">🤙Contact me 😉</h1>
+        <h1 className="contact-title">🤙 Contact me 😉</h1>
         <div className="contact-container">
           {/* Follow Section */}
           <div className="follow" data-aos="fade-right">
             <h1>Let's build something together</h1>
             <p>
-              If you have any questions or would like to collaborate, feel free
-              to contact me.
+              If you have any questions or would like to collaborate, feel free to contact me.
             </p>
 
             <h2 data-aos="fade-up">Follow me on:</h2>
@@ -90,52 +83,35 @@ Amna`
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.linkedin.com/in/amna-ashraf1122/"
-                  aria-label="LinkedIn"
-                >
+                <a href="https://www.linkedin.com/in/amna-ashraf1122/" aria-label="LinkedIn">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.youtube.com/@Dev-Amna"
-                  aria-label="youtube"
-                >
+                <a href="https://www.youtube.com/@Dev-Amna" aria-label="YouTube">
                   <i className="fab fa-youtube"></i>
                 </a>
               </li>
             </ul>
+
             <div className="magic-container">
               {!showMagic && (
                 <MyButton className="magic-button" onClick={handleMagicClick}>
                   See Magic
                 </MyButton>
               )}
-
               {showMagic && <MagicButton onClose={closeMagic} />}
             </div>
           </div>
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} data-aos="fade-left">
-            {/* Auto-reply message */}
-            {autoReply && (
-              <pre className="auto-reply" data-aos="fade-up">
-                {autoReply}
-              </pre>
-            )}
-
             <div className="formContent">
               <h2 className="form-title" data-aos="fade-up">
                 Contact Me
               </h2>
 
-              <div
-                className="input-group"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
+              <div className="input-group" data-aos="fade-up" data-aos-delay="100">
                 <input
                   type="text"
                   id="name"
@@ -148,11 +124,7 @@ Amna`
                 <label htmlFor="name">Name *</label>
               </div>
 
-              <div
-                className="input-group"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
+              <div className="input-group" data-aos="fade-up" data-aos-delay="200">
                 <input
                   type="email"
                   id="email"
@@ -165,11 +137,7 @@ Amna`
                 <label htmlFor="email">Email *</label>
               </div>
 
-              <div
-                className="input-group"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              <div className="input-group" data-aos="fade-up" data-aos-delay="300">
                 <textarea
                   id="msg"
                   name="msg"
@@ -183,11 +151,7 @@ Amna`
               </div>
 
               <div data-aos-delay="400">
-                <MyButton
-                  type="submit"
-                  className="submit-btn"
-                  disabled={loading}
-                >
+                <MyButton type="submit" className="submit-btn" disabled={loading}>
                   {loading ? "Sending..." : "Send"}
                 </MyButton>
               </div>
@@ -199,6 +163,5 @@ Amna`
     </>
   );
 }
-//
 
 export default Contact;
