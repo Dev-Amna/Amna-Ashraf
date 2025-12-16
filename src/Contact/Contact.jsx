@@ -10,6 +10,8 @@ import "aos/dist/aos.css";
 import "./Contact.css";
 
 function Contact() {
+  const [autoReply, setAutoReply] = useState(""); // store formatted auto-reply
+
   const [showMagic, setShowMagic] = useState(false);
   const [loading, setLoading] = useState(false); // New state for loading
 
@@ -41,6 +43,18 @@ function Contact() {
         () => {
           toast.success("Message sent successfully!", { autoClose: 3000 });
           setFormData({ name: "", email: "", msg: "" });
+          setAutoReply(
+            `Hi ${formData.name},
+
+Thank you for reaching out! I have received your message: "${formData.msg}"
+
+I will review it and get back to you as soon as possible.
+
+In the meantime, feel free to explore my portfolio for more info.
+
+Best regards,
+Amna`
+          );
         },
         () => {
           toast.error("Failed to send message. Please try again.", {
@@ -105,6 +119,13 @@ function Contact() {
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} data-aos="fade-left">
+            {/* Auto-reply message */}
+            {autoReply && (
+              <pre className="auto-reply" data-aos="fade-up">
+                {autoReply}
+              </pre>
+            )}
+
             <div className="formContent">
               <h2 className="form-title" data-aos="fade-up">
                 Contact Me
@@ -162,7 +183,11 @@ function Contact() {
               </div>
 
               <div data-aos-delay="400">
-                <MyButton type="submit" className="submit-btn" disabled={loading}>
+                <MyButton
+                  type="submit"
+                  className="submit-btn"
+                  disabled={loading}
+                >
                   {loading ? "Sending..." : "Send"}
                 </MyButton>
               </div>
@@ -174,6 +199,6 @@ function Contact() {
     </>
   );
 }
-// 
+//
 
 export default Contact;
