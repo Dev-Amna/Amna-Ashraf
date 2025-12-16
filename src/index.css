@@ -165,19 +165,6 @@ body.theme-transition .theme-icon {
   display: none;
 }
 
-.menuIcon,
-.closeIcon {
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.menuIcon:hover,
-.closeIcon:hover {
-  transform: scale(1.2) rotate(5deg);
-}
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -423,4 +410,40 @@ html {
 .style-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+/* Animated Menu Button */
+.menu-btn {
+  width: 34px;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1200;
+}
+
+.menu-btn span {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, #9d50bb, #4776E6);
+  border-radius: 5px;
+  transition: all 0.35s ease;
+  transform-origin: left center;
+}
+
+/* Animation when open */
+.menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg);
 }

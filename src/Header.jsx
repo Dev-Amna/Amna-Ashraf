@@ -6,13 +6,12 @@ import Contact from "./Contact/Contact";
 import Project from "./project/Project";
 import About from "./aboutSeaction/About";
 
-import { FaSun, FaMoon } from "react-icons/fa"; 
+import { FaSun, FaMoon } from "react-icons/fa";
 
 function Header() {
-  
   const [dark, setDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-const [showMagic, setShowMagic] = useState(false);
+  const [showMagic, setShowMagic] = useState(false);
 
   const handleMagicClick = () => {
     setShowMagic(true);
@@ -63,13 +62,11 @@ const [showMagic, setShowMagic] = useState(false);
       <div className="nav">
         {/* Logo + Theme Toggle */}
         <div className="logo-and-theme">
-          <div
-            className="logo"
-           
-          >
+          <div className="logo">
             <span
               style={{
-                backgroundImage: "linear-gradient(to right, #6d188fff, #4776E6)",
+                backgroundImage:
+                  "linear-gradient(to right, #6d188fff, #4776E6)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -88,9 +85,15 @@ const [showMagic, setShowMagic] = useState(false);
               }}
             >
               {dark ? (
-                <FaSun className="theme-icon" style={{ fontSize: "28px", color: "#f5f5f5" }} />
+                <FaSun
+                  className="theme-icon"
+                  style={{ fontSize: "28px", color: "#f5f5f5" }}
+                />
               ) : (
-                <FaMoon className="theme-icon" style={{ fontSize: "28px", color: "#f5f5f5" }} />
+                <FaMoon
+                  className="theme-icon"
+                  style={{ fontSize: "28px", color: "#f5f5f5" }}
+                />
               )}
             </button>
           </div>
@@ -99,49 +102,93 @@ const [showMagic, setShowMagic] = useState(false);
         {/* Desktop nav links */}
         <div className="navLinks">
           <ul>
-            <li><a href="#hero"><i className="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="#about"><i className="fa-solid fa-circle-info"></i> About</a></li>
-            <li><a href="#skill"><i className="fa-solid fa-gear"></i> Skills</a></li>
-            <li><a href="#project"><i className="fa-solid fa-briefcase"></i> Projects</a></li>
-            <li className="style-btn"><a href="#contact"><i className="fa-solid fa-phone "></i> Contact Me</a></li>
+            <li>
+              <a href="#hero">
+                <i className="fa-solid fa-house"></i> Home
+              </a>
+            </li>
+            <li>
+              <a href="#about">
+                <i className="fa-solid fa-circle-info"></i> About
+              </a>
+            </li>
+            <li>
+              <a href="#skill">
+                <i className="fa-solid fa-gear"></i> Skills
+              </a>
+            </li>
+            <li>
+              <a href="#project">
+                <i className="fa-solid fa-briefcase"></i> Projects
+              </a>
+            </li>
+            <li className="style-btn">
+              <a href="#contact">
+                <i className="fa-solid fa-phone "></i> Contact Me
+              </a>
+            </li>
           </ul>
         </div>
 
         {/* Hamburger */}
         <div className="mobileMenuToggle">
-          {!menuOpen ? (
-            <i
-              className="fa-solid fa-bars menuIcon"
-              onClick={() => setMenuOpen(true)}
-              style={{ fontSize: '28px', color: '#f5f5f5', cursor: 'pointer' }}
-            ></i>
-          ) : (
-            <i
-              className="fa-solid fa-xmark closeIcon"
-              onClick={() => setMenuOpen(false)}
-              style={{ fontSize: '28px', color: '#f5f5f5', cursor: 'pointer' }}
-            ></i>
-          )}
+          <button
+            className={`menu-btn ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
 
-      {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
+      {menuOpen && (
+        <div className="overlay" onClick={() => setMenuOpen(false)}></div>
+      )}
 
       {/* Sidebar for mobile */}
       <div className={`sidebar ${menuOpen ? "open" : ""}`}>
         <ul>
-          <li><a href="#hero" onClick={handleLinkClick}>Home</a></li>
-          <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-          <li><a href="#skill" onClick={handleLinkClick}>Skill</a></li>
-          <li><a href="#project" onClick={handleLinkClick}>Projects</a></li>
-          <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+          <li>
+            <a href="#hero" onClick={handleLinkClick}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#about" onClick={handleLinkClick}>
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#skill" onClick={handleLinkClick}>
+              Skill
+            </a>
+          </li>
+          <li>
+            <a href="#project" onClick={handleLinkClick}>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#contact" onClick={handleLinkClick}>
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
 
       {/* Background bubbles */}
       <div className="bubbles">
-        <span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
       <Hero />
@@ -149,7 +196,6 @@ const [showMagic, setShowMagic] = useState(false);
       <Skill />
       <Project />
       <Contact />
- 
     </>
   );
 }
