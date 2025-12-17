@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import { MyButton } from "../button/Button";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,10 +13,15 @@ function Contact() {
   const [showMagic, setShowMagic] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleMagicClick = () => setShowMagic(true);
-  const closeMagic = () => setShowMagic(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    msg: "",
+  });
 
-  const [formData, setFormData] = useState({ name: "", email: "", msg: "" });
+  useEffect(() => {
+    AOS.init({ once: true, duration: 800 });
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,37 +31,51 @@ function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    // Email to your inbox
-    const emailParams = {
+    // 🔹 Main email params (to you)
+    const mainEmailParams = {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.msg,
     };
 
     emailjs
-      .send("service_4v4s31d", "template_6txi5km", emailParams, "gf9OfKiAGstx0sCiv")
+      .send(
+        "service_4v4s31d",
+        "template_6txi5km",
+        mainEmailParams,
+        "gf9OfKiAGstx0sCiv"
+      )
       .then(() => {
         toast.success("Message sent successfully!", { autoClose: 3000 });
-        setFormData({ name: "", email: "", msg: "" });
 
-        // Auto-reply to visitor
+        // 🔹 Auto-reply params (to visitor)
         const autoReplyParams = {
           from_name: formData.name,
+          to_email: formData.email,
           message: formData.msg,
-          to_email: formData.email, // must match {{to_email}} in template_qqh7s67
         };
 
         emailjs
-          .send("service_4v4s31d", "template_qqh7s67", autoReplyParams, "gf9OfKiAGstx0sCiv")
+          .send(
+            "service_4v4s31d",
+            "template_qqh7s67", // ✅ Auto-reply template
+            autoReplyParams,
+            "gf9OfKiAGstx0sCiv"
+          )
           .then(() => {
-            toast.info("Auto-reply sent to visitor!", { autoClose: 3000 });
+            console.log("Auto-reply sent successfully");
           })
-          .catch(() => {
-            toast.error("Failed to send auto-reply.", { autoClose: 3000 });
+          .catch((err) => {
+            console.error("Auto-reply error:", err);
+            toast.error("Auto-reply failed.", { autoClose: 3000 });
           });
+
+        setFormData({ name: "", email: "", msg: "" });
       })
       .catch(() => {
-        toast.error("Failed to send message. Please try again.", { autoClose: 3000 });
+        toast.error("Failed to send message. Try again.", {
+          autoClose: 3000,
+        });
       })
       .finally(() => setLoading(false));
   };
@@ -67,12 +86,14 @@ function Contact() {
 
       <section id="contact" className="contact-section">
         <h1 className="contact-title">🤙 Contact me 😉</h1>
+
         <div className="contact-container">
-          {/* Follow Section */}
+          {/* Left Side */}
           <div className="follow" data-aos="fade-right">
             <h1>Let's build something together</h1>
             <p>
-              If you have any questions or would like to collaborate, feel free to contact me.
+              If you have any questions or would like to collaborate, feel free
+              to contact me.
             </p>
 
             <h2 data-aos="fade-up">Follow me on:</h2>
@@ -83,12 +104,18 @@ function Contact() {
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/amna-ashraf1122/" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/amna-ashraf1122/"
+                  aria-label="LinkedIn"
+                >
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.youtube.com/@Dev-Amna" aria-label="YouTube">
+                <a
+                  href="https://www.youtube.com/@Dev-Amna"
+                  aria-label="YouTube"
+                >
                   <i className="fab fa-youtube"></i>
                 </a>
               </li>
@@ -96,69 +123,60 @@ function Contact() {
 
             <div className="magic-container">
               {!showMagic && (
-                <MyButton className="magic-button" onClick={handleMagicClick}>
+                <MyButton onClick={() => setShowMagic(true)}>
                   See Magic
                 </MyButton>
               )}
-              {showMagic && <MagicButton onClose={closeMagic} />}
+              {showMagic && <MagicButton onClose={() => setShowMagic(false)} />}
             </div>
           </div>
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} data-aos="fade-left">
             <div className="formContent">
-              <h2 className="form-title" data-aos="fade-up">
-                Contact Me
-              </h2>
+              <h2 className="form-title">Contact Me</h2>
 
-              <div className="input-group" data-aos="fade-up" data-aos-delay="100">
+              <div className="input-group">
                 <input
                   type="text"
-                  id="name"
                   name="name"
-                  placeholder=" "
                   value={formData.name}
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="name">Name *</label>
+                <label>Name *</label>
               </div>
 
-              <div className="input-group" data-aos="fade-up" data-aos-delay="200">
+              <div className="input-group">
                 <input
                   type="email"
-                  id="email"
                   name="email"
-                  placeholder=" "
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="email">Email *</label>
+                <label>Email *</label>
               </div>
 
-              <div className="input-group" data-aos="fade-up" data-aos-delay="300">
+              <div className="input-group">
                 <textarea
-                  id="msg"
                   name="msg"
                   rows="4"
-                  placeholder=" "
                   value={formData.msg}
                   onChange={handleChange}
                   required
-                ></textarea>
-                <label htmlFor="msg">Message *</label>
+                />
+                <label>Message *</label>
               </div>
 
-              <div data-aos-delay="400">
-                <MyButton type="submit" className="submit-btn" disabled={loading}>
-                  {loading ? "Sending..." : "Send"}
-                </MyButton>
-              </div>
+              <MyButton type="submit" disabled={loading}>
+                {loading ? "Sending..." : "Send"}
+              </MyButton>
             </div>
           </form>
         </div>
       </section>
+
       <Footer />
     </>
   );
