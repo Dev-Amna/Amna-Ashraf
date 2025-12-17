@@ -58,7 +58,7 @@ function Contact() {
         emailjs
           .send(
             "service_4v4s31d",
-            "template_qqh7s67", // ✅ Auto-reply template
+            "template_qqh7s67", 
             autoReplyParams,
             "gf9OfKiAGstx0sCiv"
           )
