@@ -156,3 +156,28 @@
     font-size: 0.8rem;
   }
 }
+.see-more-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.see-more-content {
+  text-align: center;
+  color: #fff;
+}
+
+.plus-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.see-more-content p {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}

@@ -9,6 +9,7 @@ import pro5 from "../assets/project-img/todo-app.jpg";
 import pro6 from "../assets/project-img/Rocks-Paper-Scissors-.png";
 import pro7 from "../assets/project-img/Simon-Says-Game.png";
 import pro8 from "../assets/project-img/Calculator-app.jpg";
+
 function Project() {
   const projects = [
     {
@@ -46,7 +47,8 @@ function Project() {
       img: pro7,
       liveDemo: "https://dev-amna.github.io/Simon-Says-Game/",
       code: "https://github.com/Dev-Amna/Simon-Says-Game",
-    }, {
+    },
+    {
       img: pro8,
       liveDemo: "https://dev-amna.github.io/Calculator-app/",
       code: "https://github.com/Dev-Amna/Calculator-app",
@@ -65,18 +67,24 @@ function Project() {
         <span className="col short"></span>
       </h1>
 
-
       <motion.div whileTap={{ cursor: "grabbing" }}>
         <motion.div
           className="inner-carousel"
           drag="x"
           dragConstraints={{ right: 0, left: -2700 }}
         >
+          {/* Project Cards */}
           {projects.map((project, index) => (
-            < motion.div className="project-card" key={index.name} data-aos="fade-up" data-aos-delay={index * 100}>
+            <motion.div
+              className="project-card"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <div className="card-image">
                 <img src={project.img} alt="Project Preview" />
               </div>
+
               <div className="card-buttons">
                 <a
                   href={project.liveDemo}
@@ -95,11 +103,24 @@ function Project() {
                   View Code
                 </a>
               </div>
-
             </motion.div>
           ))}
-        </motion.div>
 
+          {/* SEE MORE PROJECTS CARD */}
+          <motion.a
+            href="https://my-project-list-nine.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-card see-more-card"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="see-more-content">
+              <span className="plus-icon">＋</span>
+              <p>See more projects</p>
+            </div>
+          </motion.a>
+        </motion.div>
       </motion.div>
     </section>
   );
