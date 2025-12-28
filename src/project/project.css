@@ -2,7 +2,7 @@
   text-align: center;
   padding: 100px 20px;
   color: #111827;
-  overflow: hidden; 
+
 }
 
 /* Title */
@@ -53,11 +53,16 @@
 }
 
 /* Carousel */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
 .inner-carousel {
   display: flex;
   gap: 1.5rem;
-  cursor: grab;
   padding: 20px;
+    width: max-content;
 }
 
 /* Card */
@@ -180,4 +185,17 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+
+/* Mobile: show buttons without hover */
+@media (max-width: 576px) {
+  .card-buttons {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
 }

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./project.css";
 import { motion } from "framer-motion";
+
 import pro1 from "../assets/project-img/rest-countries.jpg";
 import pro2 from "../assets/project-img/age-calculator-app.jpg";
 import pro3 from "../assets/project-img/contact-form.jpg";
@@ -11,6 +12,8 @@ import pro7 from "../assets/project-img/Simon-Says-Game.png";
 import pro8 from "../assets/project-img/Calculator-app.jpg";
 
 function Project() {
+  const constraintRef = useRef(null);
+
   const projects = [
     {
       img: pro1,
@@ -57,32 +60,23 @@ function Project() {
 
   return (
     <section id="project" className="project-section">
-      <h1 className="project-title">
-        <span className="col short"></span>
-        <span className="col medium"></span>
-        <span className="col tall"></span>
-        My Projects
-        <span className="col tall"></span>
-        <span className="col medium"></span>
-        <span className="col short"></span>
-      </h1>
+      <h1 className="project-title">My Projects</h1>
 
-      <motion.div whileTap={{ cursor: "grabbing" }}>
+      {/* CONSTRAINT */}
+      <motion.div ref={constraintRef} className="carousel-wrapper">
         <motion.div
           className="inner-carousel"
           drag="x"
-          dragConstraints={{ right: 0, left: -2700 }}
+          dragConstraints={constraintRef}
+          dragDirectionLock
+          dragElastic={0.15}
+          dragMomentum={false}
+          style={{ touchAction: "pan-y" }}
         >
-          {/* Project Cards */}
           {projects.map((project, index) => (
-            <motion.div
-              className="project-card"
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
+            <motion.div className="project-card" key={index}>
               <div className="card-image">
-                <img src={project.img} alt="Project Preview" />
+                <img src={project.img} alt="Project" />
               </div>
 
               <div className="card-buttons">
@@ -106,14 +100,11 @@ function Project() {
             </motion.div>
           ))}
 
-          {/* SEE MORE PROJECTS CARD */}
           <motion.a
             href="https://my-project-list-nine.vercel.app/"
             target="_blank"
             rel="noreferrer"
             className="project-card see-more-card"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <div className="see-more-content">
               <span className="plus-icon">＋</span>
