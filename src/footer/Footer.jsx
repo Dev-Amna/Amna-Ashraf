@@ -9,7 +9,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <h3>Made by Amna Ashraf</h3>
-        <p>© 2025 All rights reserved.</p>
+        <p>© {new Date().getFullYear()} All rights reserved.</p>
       
       </div>
     </footer>
