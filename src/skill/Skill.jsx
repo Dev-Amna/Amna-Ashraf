@@ -1,23 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import "./Skill.css";
-import skill1 from "../assets/html-5.png";
-import skill2 from "../assets/css-3.png";
-import skill3 from "../assets/java-script.png";
-import skill4 from "../assets/react.png";
-import skill5 from "../assets/bootstrap.png";
-import skill6 from "../assets/nodejs.png";
+import { skills } from "../data/SkillData";
 
 import "aos/dist/aos.css";
 
 function Skill() {
-  const skills = [
-    { name: "HTML-5", icon: skill1, desc: "Semantic and accessible web structure", level: 95 },
-    { name: "CSS-3", icon: skill2, desc: "Modern, responsive, and adaptive styling", level: 90 },
-    { name: "JavaScript", icon: skill3, desc: "Dynamic, interactive, and functional web experiences", level: 85 },
-    { name: "React", icon: skill4, desc: "Efficient, component-based UI development", level: 88 },
-    { name: "Bootstrap", icon: skill5, desc: "Responsive design with prebuilt UI components", level: 80 },
-    { name: "Node.js", icon: skill6, desc: "Scalable, server-side JavaScript runtime", level: 75 },
-  ];
 
   const progressBarsRef = useRef([]);
 
